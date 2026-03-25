@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dayvid Creatives | Terms and Conditions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #cfe6ff 0%, #b9dbff 35%, #a9d2ff 65%, #dff1ff 100%);
+            color: #0f2a44;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1300px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 35px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 60px;
+            box-shadow: 0 8px 30px rgba(0, 40, 90, 0.08);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #0d3c75, #3fa0ff);
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #143b60;
+            font-weight: 700;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #3fa0ff;
+            transition: 0.3s;
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: #0f2a44;
+            border-radius: 5px;
+            transition: 0.4s cubic-bezier(.77, 0, .18, 1);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        main {
+            padding: 150px 0 80px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .page-shell {
+            width: 90%;
+            max-width: 1100px;
+            background: rgba(255, 255, 255, 0.58);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.65);
+            border-radius: 34px;
+            padding: 48px 38px;
+            box-shadow: 0 18px 42px rgba(0, 40, 90, 0.1);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            margin-bottom: 8px;
+            color: #0d3c75;
+        }
+
+        .meta {
+            color: rgba(15, 42, 68, 0.75);
+            margin-bottom: 28px;
+        }
+
+        section {
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #0f2a44;
+        }
+
+        p,
+        li {
+            line-height: 1.7;
+            color: rgba(15, 42, 68, 0.9);
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 28px 20px 34px;
+            color: rgba(15, 42, 68, 0.8);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 724px) {
+            nav {
+                position: fixed;
+                top: 90px;
+                right: -100%;
+                width: 80%;
+                background: white;
+                border-radius: 30px;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 24px;
+                padding: 28px;
+                box-shadow: -10px 0 40px rgba(0, 40, 90, 0.15);
+                transition: 0.5s cubic-bezier(.77, 0, .18, 1);
+                opacity: 0;
+            }
+
+            nav.active {
+                right: 2.5%;
+                opacity: 1;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-container {
+                padding: 12px 20px;
+                border-radius: 42px;
+            }
+
+            main {
+                padding-top: 120px;
+            }
+
+            .page-shell {
+                padding: 34px 22px;
+                border-radius: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">Dayvid Creatives</div>
+            <nav id="nav">
+                <a href="index.html#home">Home</a>
+                <a href="#intro" class="active">Overview</a>
+                <a href="#services">Services</a>
+                <a href="#payments">Payments</a>
+                <a href="#rights">Rights</a>
+            </nav>
+            <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-shell">
+            <h1 id="intro">Terms and Conditions</h1>
+            <p class="meta">Effective Date: March 25, 2026</p>
+
+            <section id="services">
+                <h2>1. Services</h2>
+                <p>Dayvid Creatives provides design and branding services based on agreed project scope, timelines, and deliverables shared before work begins.</p>
+            </section>
+
+            <section>
+                <h2>2. Project Scope and Revisions</h2>
+                <p>Each project includes a defined number of revisions. Requests outside the approved scope may require additional fees and timeline adjustments.</p>
+            </section>
+
+            <section id="payments">
+                <h2>3. Payments</h2>
+                <ul>
+                    <li>A deposit may be required before project kickoff.</li>
+                    <li>Final files are delivered after complete payment is received.</li>
+                    <li>Late payments may pause ongoing project work.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>4. Turnaround Time</h2>
+                <p>Delivery dates are estimates and may shift if project requirements change, if feedback is delayed, or if requested assets are not provided on time.</p>
+            </section>
+
+            <section id="rights">
+                <h2>5. Intellectual Property</h2>
+                <p>Final approved work is transferred to the client after full payment, except for third-party assets and fonts that may require separate licensing.</p>
+            </section>
+
+            <section>
+                <h2>6. Acceptable Use</h2>
+                <p>Dayvid Creatives reserves the right to decline projects involving illegal, harmful, or misleading content.</p>
+            </section>
+
+            <section>
+                <h2>7. Limitation of Liability</h2>
+                <p>Services are provided in good faith. Liability is limited to the total amount paid for the specific project in question.</p>
+            </section>
+
+            <section>
+                <h2>8. Updates to Terms</h2>
+                <p>These terms may be updated periodically. The latest version on this page replaces previous versions.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>Copyright 2026 Dayvid Creatives. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const nav = document.getElementById("nav");
+
+        hamburger.addEventListener("click", () => {
+            nav.classList.toggle("active");
+            hamburger.classList.toggle("active");
+        });
+
+        document.querySelectorAll("nav a").forEach(link => {
+            link.addEventListener("click", () => {
+                nav.classList.remove("active");
+                hamburger.classList.remove("active");
+            });
+        });
+
+        document.addEventListener("click", (e) => {
+            if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
+                nav.classList.remove("active");
+                hamburger.classList.remove("active");
+            }
+        });
+    </script>
+</body>
+
+</html>

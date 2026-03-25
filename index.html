@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dayvid Creatives — Design Studio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social and UI icons (simple CDN link to avoid integrity mismatch) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Make images responsive by default */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        body {
+            background: linear-gradient(135deg,
+                    #cfe6ff 0%,
+                    #b9dbff 35%,
+                    #a9d2ff 65%,
+                    #dff1ff 100%);
+            color: #0f2a44;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 2.5rem;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.45);
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 30px 50px -20px #1e4b7c;
+        }
+
+        .logo_img {
+            position: relative;
+            max-width: 5rem;
+            max-height: 5rem;
+            margin-bottom: -2rem;
+            margin-top: -2rem;
+            margin-left: -1rem;
+        }
+
+        .loggo {
+            display: flex;
+        }
+
+        .bbb {
+            margin-left: -1rem;
+        }
+
+        /* animated elements */
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .animate-float2 {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(12px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s forwards;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        .rimg {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1300px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 35px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 60px;
+            box-shadow: 0 8px 30px rgba(0, 40, 90, 0.08);
+            transition: .3s;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #0d3c75, #3fa0ff);
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -.5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #143b60;
+            font-weight: 700;
+            position: relative;
+            padding: 5px 0;
+            transition: .3s;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #3fa0ff;
+            transition: .3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .flexx {
+            display: flex;
+        }
+
+        .imga img {
+            margin-top: -20rem;
+            width: clamp(180px, 35vw, 420px);
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+
+        /* HAMBURGER */
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: #0f2a44;
+            border-radius: 5px;
+            transition: .4s cubic-bezier(.77, 0, .18, 1);
+        }
+
+        /* Animation */
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            padding-top: 160px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-container {
+            width: 90%;
+            max-width: 1300px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 60px;
+        }
+
+        .hero-text {
+            flex: 1 1 450px;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-text span {
+            background: linear-gradient(90deg, #0d3c75, #3fa0ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            opacity: .85;
+            margin-bottom: 35px;
+        }
+
+        .btn {
+            padding: 14px 38px;
+            border-radius: 40px;
+            border: none;
+            background: linear-gradient(90deg, #0d3c75, #3fa0ff);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .4s;
+            box-shadow: 0 10px 25px rgba(0, 70, 150, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(0, 70, 150, 0.3);
+        }
+
+        /* HERO VISUAL */
+
+        .hero-visual {
+            flex: 1 1 300px;
+            min-height: 280px;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(200, 225, 255, 0.2) 70%);
+            border-radius: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .floating-icon {
+            font-size: 6rem;
+            color: #1976d2;
+            filter: drop-shadow(0 20px 20px rgba(0, 80, 130, 0.3));
+            animation: rotateSlow 14s infinite linear;
+        }
+
+        @keyframes rotateSlow {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-20px)
+            }
+
+            100% {
+                transform: translateY(0)
+            }
+        }
+
+        /* ================= SECTIONS ================= */
+
+        .section-class {
+            padding: 50px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .section-class2 {
+            padding-top: 200px;
+            padding-bottom: 100px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .section-class3 {
+            padding-top: 10px;
+            padding-bottom: 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .section-class4 {
+            padding-top: 20px;
+            padding-bottom: 50px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .section-container {
+            width: 90%;
+            max-width: 1300px;
+        }
+
+        .section-container2 {
+            width: 90%;
+            max-width: 1300px;
+        }
+
+        .txt {
+            max-width: 50%;
+            margin: 0 auto;
+        }
+
+        .aaa {
+            margin-top: -2.3rem;
+        }
+
+        .aaa2 {
+            margin-top: -2.3rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: bolder;
+            margin-bottom: 70px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .section-title2 {
+            font-size: clamp(3.3rem, 5.6vw, 3.5rem);
+            font-weight: bold;
+            margin-bottom: 70px;
+            display: flex;
+            justify-content: center;
+            color: #17528d;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(18px);
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: 0 20px 50px rgba(0, 50, 120, 0.06);
+        }
+
+        /* ================= WHAT WE DO / SERVICES ================= */
+
+        .services-section {
+            margin-top:55px;
+            padding-top: 30px;
+            padding-bottom: 70px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .services-shell {
+            background: rgba(255, 255, 255, 0.52);
+            backdrop-filter: blur(18px);
+            border-radius: 34px;
+            padding: 60px;
+            box-shadow: 0 20px 50px rgba(0, 50, 120, 0.08);
+        }
+
+        .services-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .services-heading p {
+            max-width: 640px;
+            margin: 14px auto 0;
+            font-size: 1.25rem;
+            line-height: 1.65;
+            color: rgba(2, 23, 42, 0.8);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .service-card {
+            background:
+                linear-gradient(160deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.26)),
+                radial-gradient(circle at top left, rgba(255, 255, 255, 0.6), transparent 52%),
+                rgba(255, 255, 255, 0.2);
+            border-radius: 26px;
+            padding: 28px 24px;
+            min-height: 245px;
+            text-align: center;
+            box-shadow:
+                0 22px 45px rgba(10, 66, 126, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.28);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px) saturate(150%);
+            -webkit-backdrop-filter: blur(24px) saturate(150%);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+            animation: serviceBob 5s ease-in-out infinite;
+        }
+
+        .service-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.08) 55%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.24), transparent 40%);
+            pointer-events: none;
+        }
+
+        .service-card::after {
+            content: "";
+            position: absolute;
+            inset: 1px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            pointer-events: none;
+        }
+
+        .service-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .service-card:nth-child(3) {
+            animation-delay: 0.8s;
+        }
+
+        .service-card:nth-child(4) {
+            animation-delay: 1.2s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px) scale(1.01);
+            box-shadow: 0 26px 52px rgba(10, 66, 126, 0.18);
+            border-color: rgba(255, 255, 255, 0.84);
+            background:
+                linear-gradient(160deg, rgba(255, 255, 255, 0.84), rgba(234, 245, 255, 0.34)),
+                radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), transparent 52%),
+                rgba(255, 255, 255, 0.24);
+        }
+
+        .service-icon-wrap {
+            width: 82px;
+            height: 82px;
+            margin: 0 auto 22px;
+            border-radius: 24px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(215, 235, 255, 0.42));
+            border: 1px solid rgba(255, 255, 255, 0.65);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.9),
+                0 10px 22px rgba(63, 160, 255, 0.12);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-icon-wrap i {
+            font-size: 2rem;
+            color: #0d3c75;
+        }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            color: #0f2a44;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card p {
+            font-size: 0.96rem;
+            line-height: 1.7;
+            color: rgba(15, 42, 68, 0.75);
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes serviceBob {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* ================= WORK ================= */
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .work-card {
+            max-height: 300px;
+            background: none;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 40, 100, 0.06);
+            transition: .4s;
+            position: relative;
+        }
+
+        .work-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .work-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, #0d3c75cc, transparent);
+            color: white;
+            display: flex;
+            align-items: flex-end;
+            padding: 25px;
+            opacity: 0;
+            transition: .4s;
+        }
+
+        .work-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .work-card:hover .work-overlay {
+            opacity: 1;
+        }
+
+        /* ================= CTA ================= */
+
+        .cta {
+            text-align: center;
+            background: linear-gradient(145deg, #0d3c75, #3fa0ff);
+            color: white;
+            border-radius: 40px;
+            padding: 80px 40px;
+            box-shadow: 0 30px 70px rgba(0, 60, 150, 0.3);
+        }
+
+        .cta h2 {
+            font-size: clamp(1.6rem, 4vw, 2.5rem);
+            margin-bottom: 20px;
+        }
+
+        /* ================= CONTACT ================= */
+
+        .contact-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 70px;
+
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .contact-item i {
+            font-size: 24px;
+            font-weight: bolder;
+            color: #0d3c75;
+        }
+
+        .contact-item a {
+            text-decoration: none;
+            color: #0f2a44;
+            font-weight: 500;
+            transition: .3s;
+        }
+
+        .contact-item a:hover {
+            color: #3fa0ff;
+        }
+
+        .contact-logo img {
+            max-width: 300px;
+            border-radius: 30px;
+        }
+
+        .contact-items {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 300px;
+        }
+
+        /* ================= PREMIUM FOOTER ================= */
+
+        footer {
+            position: relative;
+            background: linear-gradient(145deg, #0f2a44, #0c2238);
+            color: #d6e6ff;
+            padding: 100px 0 30px;
+            margin-top: 120px;
+            overflow: hidden;
+        }
+
+        /* Subtle glow line */
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #3fa0ff, transparent);
+            opacity: .6;
+        }
+
+        .footer-container {
+            width: 90%;
+            max-width: 1300px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 50px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .footer-brand p {
+            opacity: .8;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .footer-links h4,
+        .footer-newsletter h4 {
+            color: white;
+            margin-bottom: 18px;
+            font-size: 1.1rem;
+        }
+
+        .footer-links a {
+            display: block;
+            text-decoration: none;
+            color: #d6e6ff;
+            margin-bottom: 10px;
+            font-size: .95rem;
+            transition: .3s;
+        }
+
+        .footer-links a:hover {
+            color: #3fa0ff;
+            transform: translateX(4px);
+        }
+
+        .socials {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .socials a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            text-decoration: none;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #1f4f82;
+            color: white;
+            font-size: 23px;
+            transition: .3s;
+        }
+
+        .socials a:hover {
+            background: #3fa0ff;
+            transform: translateY(-3px);
+        }
+
+        .footer-newsletter p {
+            font-size: .9rem;
+            opacity: .8;
+            margin-bottom: 15px;
+        }
+
+        .footer-newsletter input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            margin-bottom: 10px;
+            outline: none;
+        }
+
+        .footer-newsletter button {
+            width: 100%;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: .85rem;
+            opacity: .7;
+        }
+
+        .g-btn {
+            margin-top: 2rem;
+            margin-left: 1.2rem;
+        }
+
+        .section-container2 .btn {
+            margin-top: 2rem;
+            margin-left: 1.2rem;
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media(max-width:880px) {
+            .hero {
+                padding-top: 80px;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .section-class2 {
+                margin-top: -9rem;
+            }
+
+            .flexx {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .imga img {
+                margin-top: -18rem;
+                width: clamp(144px, 40vw, 380px);
+            }
+
+            .txt {
+                max-width: 100%;
+            }
+
+            .services-shell {
+                padding: 50px 32px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+        @media(max-width:724px) {
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 300px;
+                width: 70%;
+                background: white;
+                border-radius: 30px;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 35px;
+                box-shadow: -10px 0 40px rgba(0, 40, 90, 0.15);
+                transition: .5s cubic-bezier(.77, 0, .18, 1);
+                opacity: 0;
+            }
+
+            nav.active {
+                right: 0;
+                opacity: 1;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                padding-top: 60px;
+            }
+
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-box {
+                flex-direction: column;
+            }
+
+            .section-class2 {
+                margin-top: -16rem;
+            }
+
+            .flexx {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .imga img {
+                margin-top: -12rem;
+                width: clamp(144px, 40vw, 380px);
+            }
+
+            .txt {
+                max-width: 100%;
+            }
+
+            .services-section {
+                padding-top: 10px;
+            }
+
+            .services-shell {
+                padding: 42px 24px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 18px;
+            }
+
+        }
+
+        @media (max-width:480px) {
+
+            header {
+                padding: 15px 0;
+            }
+
+            .nav-container {
+                padding: 12px 20px;
+                border-radius: 40px;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            .hero {
+                padding-top: 80px;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .hero-visual {
+                height: 260px;
+            }
+
+            .section-class2 {
+                margin-top: -18rem;
+            }
+
+            .flexx {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .imga img {
+                margin-top: -10rem;
+                width: clamp(180px, 50vw, 400px);
+            }
+
+            .txt {
+                max-width: 100%;
+            }
+
+            .section-class4 {
+                font-size: 1rem;
+                padding: 10px 0;
+
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .services-shell {
+                padding: 34px 18px;
+                border-radius: 28px;
+            }
+
+            .services-heading {
+                margin-bottom: 30px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                min-height: auto;
+                padding: 24px 20px;
+                animation-duration: 4.6s;
+            }
+
+            .glass {
+                padding: 30px;
+            }
+
+            .work-card img {
+                height: 100%;
+            }
+
+            .cta {
+                padding: 50px 25px;
+                border-radius: 25px;
+            }
+
+            .cta h2 {
+                font-size: 1.6rem;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                font-size: 0.95rem;
+            }
+
+            footer {
+                text-align: center;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+        }
+
+        @media (min-width:481px) and (max-width:768px) {
+
+            .hero {
+                padding-top: 80px;
+            }
+
+            .hero-visual {
+                height: 320px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.4rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .glass {
+                padding: 40px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+        }
+
+        @media (min-width:769px) and (max-width:1024px) {
+
+            .hero-container {
+                gap: 40px;
+            }
+
+            .hero-visual {
+                height: 350px;
+            }
+
+            .section-container {
+                width: 92%;
+            }
+
+            .work-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .contact-box {
+                gap: 30px;
+            }
+
+        }
+
+        @media (min-width:725px) and (max-width:1024px) {
+
+            nav {
+                gap: 25px;
+            }
+
+            .nav-container {
+                padding: 12px 25px;
+            }
+
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 1s cubic-bezier(.77, 0, .18, 1);
+        }
+
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width:480px) {
+
+            footer {
+                padding: 70px 20px 20px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 35px;
+                text-align: left;
+            }
+
+            .footer-brand p {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .socials {
+                justify-content: flex-start;
+            }
+
+            .footer-links a {
+                margin-bottom: 8px;
+            }
+
+            .footer-newsletter input {
+                font-size: .95rem;
+            }
+
+            .footer-newsletter button {
+                padding: 12px;
+            }
+
+            .footer-bottom {
+                margin-top: 40px;
+                font-size: .8rem;
+                text-align: left;
+            }
+
+        }
+
+        @media (min-width:481px) and (max-width:768px) {
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+                text-align: left;
+            }
+
+            .footer-newsletter {
+                grid-column: span 2;
+                max-width: 400px;
+            }
+
+            .socials {
+                justify-content: flex-start;
+            }
+
+        }
+
+        @media (min-width:769px) and (max-width:1024px) {
+
+            .footer-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-newsletter {
+                grid-column: span 3;
+                max-width: 500px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="loggo">
+                <img src="images/dayvid creatives logo png.png" alt="Logo" class="logo_img">
+                <div class="logo bbb ">Dayvid Creatives</div>
+            </div>
+            <nav id="nav">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- HERO background-image: url("images/dayvid creatives logo iupdate.jpg");-->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>We craft <span>modern visual identities</span> that elevate brands.</h1>
+                <p>Premium graphic design studio specializing in branding, digital assets, and startup visuals.</p>
+                <a href="https://wa.me/2347033834629" target="_blank" rel="noopener noreferrer"><button
+                        class="btn animate-float2">Start a Project</button></a>
+            </div>
+            <div class="hero-visual glass-card">
+                <img src="images/dayvid creatives logo png.png" alt="" class=" rimg floating-icon">
+            </div>
+        </div>
+    </section>
+
+    <section class="section-class2">
+        <div class="section-container2 glass flexx ">
+            <div class="imga">
+                <img src="images/Untitled_design__1_-removebg-preview.png" alt="">
+            </div>
+            <div class="txt">
+                <h2 class="section-title">The creative mind behind Dayvid Creatives</h2>
+                <h4 class="aaa">
+                    Meet Ola, the visionary founder of Dayvid Creatives. With a passion for design and a knack for
+                    turning ideas into stunning visuals, Ola started this studio to help brands shine. With years of
+                    experience in graphic design, branding, and digital art, Ola has built a reputation for creating
+                    designs that not only look amazing but also connect with people on a deeper level.
+                </h4>
+                <a href="https://wa.me/2347033834629" target="_blank"><button class="btn"><i>Chat with
+                            Ola</i></button></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section-class3" id="about">
+        <div class="section-container2 glass flexx ">
+            <div class="txt">
+                <h2 class="section-title"><i>About Us</i></h2>
+                <h4 class="aaa2">
+                    At Dayvid Creatives, We create designs that make people stop, smile, and take notice. From
+                    logos to social media visuals, we turn ideas into polished, eye-catching graphics that bring clarity
+                    and personality to your brand.<br><br>Our mission is simple: to bring your vision to life with
+                    creativity and care, so your brand looksits best and you feel confident showing it off. Let's create
+                    something that makes you—and yourcustomers—smile.
+                </h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT WE DO / SERVICES SECTION -->
+    <section class="services-section" id="services">
+        <div class="section-container services-shell">
+            <div class="services-heading">
+                <h2 class="section-title">What We Do</h2>
+                <p>Clean, strategic design services that help brands look polished, communicate clearly, and stand out.
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon-wrap">
+                        <i class="fa-solid fa-pen-ruler"></i>
+                    </div>
+                    <h3>Brand Identity Design</h3>
+                    <p>Logos, brand marks, and visual systems crafted to give your business a strong and memorable look.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon-wrap">
+                        <i class="fa-solid fa-hashtag"></i>
+                    </div>
+                    <h3>Social Media Design</h3>
+                    <p>Creative post designs and campaign visuals made to keep your pages consistent, sharp, and
+                        engaging.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon-wrap">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <h3>Flyers & Posters</h3>
+                    <p>Promotional materials designed to grab attention fast and communicate your message with clarity.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon-wrap">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <h3>Packaging Design</h3>
+                    <p>Product packaging concepts that feel premium, on-brand, and visually appealing at first glance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-class4">
+        <!-- additional animation: floating cta -->
+        <div style="display: flex; justify-content: center; margin: 4rem 0;">
+            <div class="glass-card"
+                style="padding: 2rem 3rem; display: inline-flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+                <span style="font-weight: 600; font-size: 1.4rem;">✨ Let’s make something beautiful</span>
+                <a href="https://wa.me/2347033834629" class="btn"
+                    style="background: #0a4d8c; text-decoration: none;">book a service</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="section-class" id="work">
+        <div class="section-container">
+            <h2 class="section-title2"><i>Gallery</i></h2>
+            <div class="work-grid">
+                <div class="work-card">
+                    <img src="images/bdee's egusi poster.jpg" alt="">
+                    <div class="work-overlay">Marketing Materials</div>
+                </div>
+                <div class="work-card">
+                    <img src="images/1000047315.jpg" alt="">
+                    <div class="work-overlay">Logo Design</div>
+                </div>
+                <div class="work-card">
+                    <img src="images/Editable Hoodie Mockup.jpg" alt="">
+                    <div class="work-overlay">Brand Identity Design</div>
+                </div>
+            </div>
+            <a href="gallery.html"><button class="btn g-btn animate-float ">View more</button></a>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section-class" id="contact">
+        <div class="section-container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-box">
+                <div class="contact-logo">
+                    <img src="images/dayvid creatives logo iupdate.jpg" alt="">
+                </div>
+                <div class="contact-items">
+                    <div class="contact-item">
+                        <i class="fa-solid fa-map-marker-alt"></i>
+                        <p>Port Harcourt, Rivers State, Nigeria</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <p>olamide.olasunkanni0001@gmail.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <p>+234 703 383 4629</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-clock"></i>
+                        <p>8 Hours Daily</p>
+                    </div>
+                    <div class="contact-item">
+                        <a
+                            href="https://www.instagram.com/_dayvidcreatives?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i
+                                class="fa-brands fa-instagram"></i> @_davidcreatives</a>
+                    </div>
+                    <div class="contact-item">
+                        <a
+                            href="https://www.pinterest.com/olamideolasunkanmi0001/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnqjj9Dcq6zBLJw7taQheLeEJ5FOuc6KFoCYqeqyIcT7nW0HwSx2JX8Yk8Hkw_aem_2dfncNueBX0Qb8krvlyUDA"><i
+                                class="fa-brands fa-pinterest"></i> Dayvid Creatives</a>
+                    </div>
+                    <div class="contact-item">
+                        <a href="https://wa.me/2347033834629" target="_blank"><i class="fa-brands fa-whatsapp"></i>
+                            WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <h3>Dayvid Creatives</h3>
+                <p>We craft modern visual identities for ambitious brands and startups worldwide.</p>
+
+                <div class="socials">
+                    <a href="https://www.instagram.com/_dayvidcreatives" target="_blank"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/2347033834629" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://t.me/dayvidcreatives" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="https://www.pinterest.com/olamideolasunkanmi0001" target="_blank"><i
+                            class="fa-brands fa-pinterest"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>links</h4>
+                <a href="#about">About Us</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <a href="terms-and-conditions.html">Terms & Conditions</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="refund-policy.html">Refund Policy</a>
+            </div>
+
+            <div class="footer-links">
+                <h4></h4>
+                <a href="#"> </a>
+                <a href="#"> </a>
+                <a href="#"> </a>
+                <a href="#"> </a>
+            </div>
+
+            <div class="footer-links">
+                <h4></h4>
+                <a href="#"> </a>
+                <a href="#"> </a>
+                <a href="#"> </a>
+                <a href="#"> </a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Dayvid Creatives. All Rights Reserved.</p>
+        </div>
+
+    </footer>
+
+    <script>
+
+        const hamburger = document.getElementById("hamburger");
+        const nav = document.getElementById("nav");
+
+        hamburger.addEventListener("click", () => {
+            nav.classList.toggle("active");
+            hamburger.classList.toggle("active");
+        });
+
+        // Close when clicking link (mobile UX improvement)
+        document.querySelectorAll("nav a").forEach(link => {
+            link.addEventListener("click", () => {
+                nav.classList.remove("active");
+                hamburger.classList.remove("active");
+            });
+        });
+
+        // Close when clicking outside
+        document.addEventListener("click", (e) => {
+            if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
+                nav.classList.remove("active");
+                hamburger.classList.remove("active");
+            }
+        });
+
+        // Scroll reveal
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll("section").forEach(section => {
+            section.classList.add("fade-in");
+            observer.observe(section);
+        });
+
+        // add tilt effect on glass cards (simple)
+        const cards = document.querySelectorAll('.glass-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', function (e) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+            card.addEventListener('mouseleave', function () {
+                card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale(1)';
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>
